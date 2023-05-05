@@ -25,3 +25,12 @@ test('test locators', async ({ page }) => {
   await page.pause()
 
 });
+
+test('test locators 2', async ({ page }) => {
+  
+  await page.goto('https://www.mercadolibre.com.co')
+  //await page.getByRole('link', {name: 'Mis compras'}).click()
+  await page.getByRole('link', {name: 'Ingresa',  exact: true }).click()
+  await page.pause()
+
+});
