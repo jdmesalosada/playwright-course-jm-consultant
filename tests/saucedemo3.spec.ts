@@ -24,9 +24,7 @@ test('purchase an item', async ({ page }) => {
 
     await page.locator('a.shopping_cart_link').click()
 
-  //  await page.pause()
-
-    expect(page.getByRole('button', {name: 'Checkout'})).toBeVisible()
+    await expect(page.getByRole('button', {name: 'Checkout'})).toBeVisible()
 
     const actualName = await page.locator('.inventory_item_name').innerText()
     const actualDescription = await page.locator('.inventory_item_desc').innerText()
@@ -36,4 +34,17 @@ test('purchase an item', async ({ page }) => {
     expect(actualDescription).toEqual(expectedDescription)
     expect(actualPrice).toEqual(expectedPrice)
 
+    await page.getByRole('button', {name: 'Checkout'}).click()
+
+    await page.getByRole('textbox', {name:'First Name'}).fill('Goku')
+    await page.getByRole('textbox', {name:'Last Name'}).fill('Sayayin')
+    await page.getByRole('textbox', {name:'Zip/Postal Code'}).fill('11000')
+
+    expect(page.getByRole('button', {name:'Continue'})).toBeVisible()
+    await page.getByRole('button', {name:'Continue'}).click()
+    await page.getByRole('button', {name:'Finish'}).click()
+
+    await expect(page.getByRole('heading', {name: 'Thank you for your order!'})).toBeVisible()
+
+    
 });

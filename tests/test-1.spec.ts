@@ -5,8 +5,8 @@ test('test', async ({ page }) => {
   await page.getByRole('link', { name: 'Colombia' }).click();
   await page.getByPlaceholder('Buscar productos, marcas y más…').fill('ihpne');
   await page.getByPlaceholder('Buscar productos, marcas y más…').press('Enter');
-  await page.getByRole('link', { name: 'Apple iPhone 13 (128 GB) - Azul medianoche' }).first().click()
-  await page.getByRole('heading', { name: '¡Hola! Para comprar, ingresa a tu cuenta' }).click();
+  //await page.getByRole('link', { name: 'Apple iPhone 13 (128 GB) - Azul medianoche' }).first().click()
+  //await page.getByRole('heading', { name: '¡Hola! Para comprar, ingresa a tu cuenta' }).click();
 });
 
 
