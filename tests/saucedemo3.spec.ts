@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { LoginPage } from './pageobjects/LoginPage';
+import dataConfig from './util/data.config';
 
 test('purchase an item', async ({ page }) => {
 
@@ -71,7 +72,7 @@ test('purchase an item 2', async ({ page }) => {
 
 test('navigate', async ({ page }) => {
 
-    await page.goto(process.env.URL)
+    await page.goto(dataConfig.URL)
     await page.pause()
 
     /*await page.getByRole('textbox', {name:'Username'}).fill('standard_user')
