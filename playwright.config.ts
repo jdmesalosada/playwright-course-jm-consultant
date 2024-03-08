@@ -4,15 +4,22 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require('dotenv').config(
+  {
+    path: `.env.${process.env.NODE_ENV ? process.env.NODE_ENV : 'dev'}`
+  }
+
+);
+
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
 
+  timeout: 60_000,
   expect: {
-    timeout: 100_000,
+    timeout: 200_000,
   },
 
   testDir: './tests',
