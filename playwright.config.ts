@@ -4,13 +4,24 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require('dotenv').config(
+  {
+    path: `.env.${process.env.NODE_ENV ? process.env.NODE_ENV : 'dev'}`
+  }
+
+);
+
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  
+
+  timeout: 60_000,
+  expect: {
+    timeout: 200_000,
+  },
+
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -29,27 +40,34 @@ export default defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    //trace: 'on-first-retry',
+    trace: 'on'
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        contextOptions: {
+          // chromium-specific permissions
+          permissions: ['clipboard-read', 'clipboard-write'],
+        },
+      },
     },
-
-    /*{
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-     Test against mobile viewports. */
+    /*
+        {
+          name: 'firefox',
+          use: { ...devices['Desktop Firefox'] },
+        },
+    
+        {
+          name: 'webkit',
+          use: { ...devices['Desktop Safari'] },
+        },
+    
+         Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },
