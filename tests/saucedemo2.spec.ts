@@ -45,7 +45,7 @@ test('purchase an item', async ({ page }) => {
 
   await page.getByRole('button', {name: 'Continue'}).click()
 
-  await page.pause()
+  //await page.pause()
 
   // Expect a title "to contain" a substring.
   //await expect(page).toHaveTitle(/Playwright/);
