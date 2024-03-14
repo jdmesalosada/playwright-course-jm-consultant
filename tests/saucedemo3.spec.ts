@@ -73,7 +73,7 @@ test('purchase an item 2', async ({ page }) => {
 test('navigate', async ({ page }) => {
 
     await page.goto(dataConfig.URL)
-    await page.pause()
+   // await page.pause()
 
     /*await page.getByRole('textbox', {name:'Username'}).fill('standard_user')
     await page.getByRole('textbox', {name:'Password'}).fill('secret_sauce')
