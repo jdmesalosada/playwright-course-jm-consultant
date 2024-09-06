@@ -1,4 +1,4 @@
-"# playwright-course-jm-consultant" 
+# playwright-course-jm-consultant
 
 ### Run all tests:
 
