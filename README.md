@@ -18,6 +18,10 @@ ENV=prod npx playwright test
 npx playwright test example.spec.ts --grep "should get users from page 2"
 ```
 
+```
+npx playwright test registration.spec.ts --grep "registration" --headed --project chromium
+```
+
 ### Run tests by Line number:
 
 ```
